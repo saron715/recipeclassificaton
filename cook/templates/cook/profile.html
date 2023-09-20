@@ -1,0 +1,102 @@
+
+    <!DOCTYPE html>
+    {% load static %}
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/stylep.css'%}">
+    <title>Recipe Showcase</title>
+</head>
+<body>
+    <header>
+        <a href="#" class="nav-logo">CulinaryCircle</a>
+    </header>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Recipes</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/cook/recipe_list" class="nav-link">Lists</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">People</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">More</a>
+                    <div class="nav-dropdown">
+                        <a href="#" class="dropdown-item">Profile</a>
+                        <a href="/cook/settings" class="dropdown-item">Settings</a>
+                        <a href="{% url 'logout' %}" class="dropdown-item">Sign Out</a>
+                    </div>
+                </li>
+<li class="nav-item">
+                <a href="#" class="nav-link">Community</a> <!-- Add Community link -->
+            </li>
+            <li>
+                <div class="button-container">
+                    <a href="/cook/recipe_post" class="post-button">New recipe</a>
+                </div>
+            </li>
+            </ul>
+        </div>
+         
+    </nav>
+    <main>
+        <h1>Welcome to CulinaryCicle</h1>
+        <p>This is a place to discover and share delicious recipes from around the world.</p>
+        <section id="home"> <h2>Home</h2>
+
+            <p>Welcome to our website. This is the home section.</p>
+            {% if request.user.is_authenticated %}
+            <h1> {{ request.user.first_name }}</h1>
+                <ul>
+                    <li>Username: {{ request.user.username }}</li>
+                    <li>Email: {{ request.user.email }}</li>
+                </ul>
+            
+                
+            {% else %}
+            <p>Welcome, Guest!</p>
+            <a href="{% url 'login' %}">Log In</a> | <a href="{% url 'signup' %}">Sign Up</a>
+            {% endif %}    
+            
+            </section>
+        <!-- Section for Five New Recipes from Friends -->
+        <section class="recipe-section">
+            <div class="recipe-card">
+                <img src="https://via.placeholder.com/250x150" alt="Recipe 1" class="recipe-image">
+                <h2>Recipe 1</h2>
+                <p>This is the description of Recipe 1.</p>
+            </div>
+            <div class="recipe-card">
+                <img src="https://via.placeholder.com/250x150" alt="Recipe 2" class="recipe-image">
+                <h2>Recipe 2</h2>
+                <p>This is the description of Recipe 2.</p>
+            </div>
+            <div class="recipe-card">
+                <img src="https://via.placeholder.com/250x150" alt="Recipe 3" class="recipe-image">
+                <h2>Recipe 3</h2>
+                <p>This is the description of Recipe 3.</p>
+            </div>
+            <div class="recipe-card">
+                <img src="https://via.placeholder.com/250x150" alt="Recipe 4" class="recipe-image">
+                <h2>Recipe 4</h2>
+                <p>This is the description of Recipe 4.</p>
+            </div>
+            
+        </section>
+
+        <!-- Section for Five Top Recipes of the Week -->
+       
+    </main>
+    <a href="{% url 'logout' %}">Log Out</a>
+</body>
+</html>
+

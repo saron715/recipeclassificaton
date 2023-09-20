@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <head>
+        <title>
+            login page
+        </title>
+        <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    </head>
+    <body>
+        {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+        <div class="log">
+            
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <div >
+                <label for="username">Username or Email</label>
+            <input type="text" name="username" id="pass" class="field signin-field" tabindex="1" data-focus-control="signingIn" autocomplete="email" inputmode="email" value="">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="pass" class="field signin-field" tabindex="2" autocomplete="current-password" value="">
+        </div>
+            <div id="login">
+                <input type="submit" value="Login">
+            </div>
+
+            
+
+        </form>
+        </div>
+    </body>
+</html>
